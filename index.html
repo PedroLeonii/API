@@ -5,65 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API meteo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="/js/app.js"></script>
     <style>
+        body,html{
+            height: 100%;
+        }
+        .intro{
+            height: 60%;
+            background-image: url("/img/logo.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .top-nav{
+            background-color: rgba(255, 255, 255, 0.226);
+            height: 10%;
+        }
         .info{
-            margin-top: 20%;
-            margin-bottom: 20%;
+            height: 90%;
+        }
+        .opzioni{
+            height: 40%;
+            width: 100%;
+            color: steelblue;
+        }
+        .research{
+            
         }
     </style>
 </head>
 <body>
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active text-info"><strong>Meteo api</strong><img class="img-fluid " src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png" alt=""></a>
-        </li>
-    </ul>
-    
-    <div class="container my-5"> 
-        <div class="jumbotron py-4 mt-5">
-            <h4 class="text-center">METEO API</h4>
-        </div>
-        <div class="row">
-            <img class="col-sm-12 rounded" src="https://images.unsplash.com/photo-1421091242698-34f6ad7fc088?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80" alt="">
-        </div>
-        <div class="info">
-            <div class="jumbotron my-5 ">
-                <div class="row">
-                    <img class="col-sm-8" src="https://images.unsplash.com/photo-1416431168657-a6c4184348ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="">
-                    <div class="col-sm-4 my-auto">
-                        <h5>METEO API</h5>
-                        <p >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi ratione eum, rem a autem quidem sequi voluptates adipisci itaque ab velit cupiditate. Ab nulla sunt explicabo. Explicabo eligendi omnis nemo!</p>
-                    </div>
+   
+    <div class="container-fluid bg-dark px-0 intro">
+        <div class="container h-100">
+            <div class="row top-nav">
+                <h5 class="text-white my-auto col-sm-4">
+                    METEO API 
+                    <img class="img-fluid"src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png" alt="">
+                </h5>
+                <ul class="nav col-sm-8 justify-content-end ">
+                    <li class="nav-item my-auto">
+                        <a class="nav-link text-white" href="#">Active</a>
+                    </li>
+                    <li class="nav-item my-auto">
+                        <a class="nav-link text-white" href="#">Link</a>
+                    </li>
+                    <li class="nav-item my-auto">
+                    <a class="nav-link text-white" href="#">Link</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-flex info text-white align-content-center flex-wrap">
+                <div class="container research">
+                    <h2>METEO API</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga qui repudiandae eum. Qui quo laborum cupiditate? Sunt eum dolores ratione, adipisci delectus voluptatibus asperiores accusamus aliquam tempora, possimus eos nemo.</p>
+                    <button type="button" class="btn btn-outline-light" id="research">GO TO RESEARCH</button>
                 </div>
             </div>
-        </div>
-        <div class="jumbotron bg-white ">
-            
-            <div class="conatainer text-center">
-                <h2 class="mb-5">RESEARCH WEATHER INFO</h2>
-                <p >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum soluta error tenetur fuga expedita, numquam nihil facere, quas natus ullam cum ipsum. Minus, earum facilis aspernatur corporis quidem eveniet ducimus.</p>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-sm-6">
-                    <div class="row">
-                        <label for="inputDate" class="text-dark col-sm-5 my-auto"><strong>Input date : </strong></label>
-                        <input type="date" class="col-sm-7 form-control my-auto">
-                    </div>
-                    <div class="row my-3">
-                        <label for="inputCity" class="text-dark col-sm-5 my-auto"><strong>Input city :</strong></label>
-                        <input type="text" class="col-sm-7 form-control my-auto">  
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="container">
-                        <img src="/img/earth.png" alt="">
-                    </div>  
-                </div>
-            </div>               
         </div>
     </div>
-    
-    
+    <div class="d-flex opzioni">
+        <div class="container my-auto ">
+            <div class="row">
+                <div class="px-5 col-sm-4">
+                    <div class="row">
+                        <img class="mx-auto"src="https://www.weatherbit.io/static/img/icons/c01d.png" alt="">
+                    </div>
+                    <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+                <div class="px-5 col-sm-4">
+                    <div class="row">
+                        <img class="mx-auto" src="https://www.weatherbit.io/static/img/icons/d03d.png" alt="">
+                    </div>
+                    <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+                <div class="px-5 col-sm-4 ">
+                    <div class="row">
+                        <img  class="mx-auto" src="https://www.weatherbit.io/static/img/icons/r05d.png" alt="">
+                    </div>
+                    <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="/js/app.js"></script>
 </html>

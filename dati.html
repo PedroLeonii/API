@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>METEO RESULT</title>
+</head>
+<style>
+    body,html{
+        height: 100%;
+        width: 100%;
+    }
+    .top-nav{
+        background-color: rgba(255, 255, 255, 0.226);
+        height: 10%;
+    }
+    .pg{
+        background-image: url("/img/sfondo.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .dati{
+        height: 45%;
+        background-color: rgba(255, 255, 255, 0.226);
+    }
+    .geoloc{
+        width: 48%;
+    }
+    .op{
+        height: 90%;
+    }
+</style>
+<body>
+    <div class="container-fluid h-100 pg">
+        <div class="container">
+            <div class="row top-nav">
+                <h5 class="text-white my-auto col-sm-4">
+                    METEO API 
+                    <img class="img-fluid"src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png" alt="">
+                </h5>
+                <ul class="nav col-sm-8 justify-content-end ">
+                    <li class="nav-item my-auto">
+                        <a class="nav-link text-white" href="#">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="align-items-center op">
+            <div class="conatiner p-4 dati">
+                <div class="d-flex flex-wrap justify-content-between h-100 mx-1">
+                    <div class="geoloc bg-white h-100 rounded-lg">
+    
+                    </div>
+                    <div class="geoloc bg-white h-100 rounded-lg">
+    
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>    
+    <div class="d-flex flex-wrap justify-content-between bg-white h-50 mt-2">
+                
+    </div>
+</body>
+<script src="/js/dati.js">
+</script>
+</html>
