@@ -18,19 +18,24 @@ window.onload = ()=>{
     function outForecast(){
         
         return new Promise((resolve,reject)=>{
-            getForecastGeoloc().then((position) => {
+            
+            getForecastGeoloc().catch((e)=>{
+                
+                reject(e);
+
+            }).then((position) => {
                 return requestForecas(position.coords.longitude, position.coords.latitude)
             
             }).catch((e)=>{
-                reject(e);
-            })
-            .then(response => {
                 
+                reject(e);
+
+            }).then(response => {
                 if (response.ok) {
                     return response.json();
                 }
                 else {
-
+                    alert("error => code: "+response.code+"message: "+response.message)
                 } 
                         
                     
@@ -71,7 +76,6 @@ window.onload = ()=>{
                         setForecastOut(dati);
                     }  
                 })
-            
                 btPrev.addEventListener("click",()=>{
                     if(daySlider > 0){
                        daySlider--;
@@ -79,8 +83,8 @@ window.onload = ()=>{
                     }  
                 })
             }).catch((e)=>{
-                loading.innerHTML = "<h6>abilitate the geolocation to view the forecast of your current position</h6>";
-                
+                loading.innerHTML = "<h6>Error message: "+e.message+"</h6>";
+
             })
     }
     init();
