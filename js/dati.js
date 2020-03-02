@@ -15,21 +15,21 @@ window.onload = ()=>{
     }
 
     function outForecast(){
-        if (daySlider < 7 && daySlider >= 0) {
-            getForecastGeoloc().then((position)=>{
-                requestForecas(position.coords.longitude,position.coords.latitude).then(response => {
-                    if(response.ok){
-                        response.json().then((data)=>{
-                        
-                            setForecastOut(data);
-                        })
-                    }
-                    else{
-                        
-                    }
-                })
-            })   
-        }
+        
+        getForecastGeoloc().then((position) => {
+            requestForecas(position.coords.longitude, position.coords.latitude).then(response => {
+                if (response.ok) {
+                    response.json().then((data) => {
+
+                        setForecastOut(data);
+                    })
+                }
+                else {
+
+                }
+            })
+        })   
+        
     }
     function setForecastOut(info){
         var location = document.getElementById("location");
@@ -45,7 +45,7 @@ window.onload = ()=>{
             var testo = info.data[daySlider][id];
             output.innerHTML = testo;
         });
-        appearAnim(forecastWeek);
+
     }
     function init(){
         outForecast();
@@ -56,16 +56,18 @@ window.onload = ()=>{
     }
     outForecast();
     btNext.addEventListener("click",()=>{
-        daySlider++;
-        outForecast();
+        if(daySlider < 7){
+            daySlider++;
+            outForecast();
+         }  
     })
     btPrev.addEventListener("click",()=>{
-        daySlider--;
-        outForecast();
+        if(daySlider > 0){
+           daySlider--;
+           outForecast();
+        }  
     })
-    function appearAnim(node){
-        node.animate([{opacity:0,marginLeft: "6%",marginRight:"6%"},{opacity:1,marginLeft: "0%",marginRight:"0%"}],600)
-    }
+   
     init();
 }
 
