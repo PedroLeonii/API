@@ -1,5 +1,6 @@
 window.onload = ()=>{    
     var daySlider = 0;
+    var dati;
     const ids = ["valid_date","temp","max_temp","min_temp","wind_cdir_full","wind_spd"];
     var loading = document.getElementById("loading");
     var forecastWeek = document.getElementById("forecastWeek");
@@ -16,21 +17,30 @@ window.onload = ()=>{
 
     function outForecast(){
         
-        getForecastGeoloc().then((position) => {
-            requestForecas(position.coords.longitude, position.coords.latitude).then(response => {
+        return new Promise((resolve,reject)=>{
+            getForecastGeoloc().then((position) => {
+                return requestForecas(position.coords.longitude, position.coords.latitude)
+            
+            }).catch((e)=>{
+                reject(e);
+            })
+            .then(response => {
+                
                 if (response.ok) {
-                    response.json().then((data) => {
-
-                        setForecastOut(data);
-                    })
+                    return response.json();
                 }
                 else {
 
-                }
+                } 
+                        
+                    
+            }).then((data) => {
+                dati = data;
+                resolve();
             })
-        })   
-        
+        })
     }
+    
     function setForecastOut(info){
         var location = document.getElementById("location");
         var description = document.getElementById("description");
@@ -48,26 +58,31 @@ window.onload = ()=>{
 
     }
     function init(){
-        outForecast();
-        setTimeout(()=>{
-            loading.style.display = "none";
-            forecastWeek.style.removeProperty("display");    
-        },1000)
+        
+            outForecast().then(()=>{
+                setForecastOut(dati);
+                setTimeout(()=>{
+                    loading.style.display = "none";
+                    forecastWeek.style.removeProperty("display");    
+                },1000);
+                btNext.addEventListener("click",()=>{
+                    if(daySlider < 7){
+                        daySlider++;
+                        setForecastOut(dati);
+                    }  
+                })
+            
+                btPrev.addEventListener("click",()=>{
+                    if(daySlider > 0){
+                       daySlider--;
+                       setForecastOut(dati);
+                    }  
+                })
+            }).catch((e)=>{
+                loading.innerHTML = "<h6>abilitate the geolocation to view the forecast of your current position</h6>";
+                
+            })
     }
-    outForecast();
-    btNext.addEventListener("click",()=>{
-        if(daySlider < 7){
-            daySlider++;
-            outForecast();
-         }  
-    })
-    btPrev.addEventListener("click",()=>{
-        if(daySlider > 0){
-           daySlider--;
-           outForecast();
-        }  
-    })
-   
     init();
 }
 
