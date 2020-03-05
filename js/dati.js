@@ -15,7 +15,7 @@ window.onload = ()=>{
         return fetch("https://api.weatherbit.io/v2.0/forecast/daily?&lat="+lat+"&lon="+lon+"&key=36d53d5360cf4756940daa069b8acf46")
     }
 
-    function outForecast(){
+    function outForecast(requestType){
         
         return new Promise((resolve,reject)=>{
             
@@ -26,22 +26,20 @@ window.onload = ()=>{
             }).then((position) => {
                 return requestForecas(position.coords.longitude, position.coords.latitude)
             
-            }).catch((e)=>{
-                
-                reject(e);
-
-            }).then(response => {
+            })
+            .then(response => {
                 if (response.ok) {
+                    
                     return response.json();
                 }
                 else {
-                    alert("error => code: "+response.code+"message: "+response.message)
+                    reject({message: response.statusText});
                 } 
                         
                     
             }).then((data) => {
-                dati = data;
-                resolve();
+    
+                resolve(dati = data);
             })
         })
     }
@@ -52,7 +50,7 @@ window.onload = ()=>{
         var imageW = document.getElementById("whetherImg");
 
         description.innerHTML = info.data[daySlider].weather.description;
-        imageW.setAttribute("src","https://www.weatherbit.io/static/img/icons/"+info.data[daySlider].weather.icon+".png")
+        imageW.src = "https://www.weatherbit.io/static/img/icons/"+info.data[daySlider].weather.icon+".png";
         location.innerHTML = info.city_name +" "+ info.country_code;
         
         ids.forEach(id => {
@@ -64,18 +62,21 @@ window.onload = ()=>{
     }
     function init(){
         
-            outForecast().then(()=>{
+            outForecast("G").then(()=>{
                 setForecastOut(dati);
+
                 setTimeout(()=>{
                     loading.style.display = "none";
                     forecastWeek.style.removeProperty("display");    
                 },1000);
+
                 btNext.addEventListener("click",()=>{
                     if(daySlider < 7){
                         daySlider++;
                         setForecastOut(dati);
                     }  
                 })
+
                 btPrev.addEventListener("click",()=>{
                     if(daySlider > 0){
                        daySlider--;
@@ -83,6 +84,7 @@ window.onload = ()=>{
                     }  
                 })
             }).catch((e)=>{
+                console.log(e)
                 loading.innerHTML = "<h6>Error message: "+e.message+"</h6>";
 
             })
