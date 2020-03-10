@@ -4,40 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/dati.css">
     <title>METEO RESULT</title>
 </head>
-<style>
-    body,html{
-        height: 100%;
-        width: 100%;
-    }
-    .top-nav{
-        background-color: rgba(255, 255, 255, 0.226);
-        height: 10%;
-    }
-    .pg{
-        background-image: url("/img/sfondo.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-    .dati{
-        height: 45%;
-        background-color: rgba(255, 255, 255, 0.226);
-    }
-    .forecast{
-        background-color: rgba(255, 255, 255, 0.74);
-    }
-    .btn-secondary{
-        background-color: transparent;
-        border:none;
-       
-    }
-    .btn-secondary:hover{
-        background-color: rgba(199, 199, 199, 0.712);
-    }
-</style>
 <body>
-    <div class="container-fluid h-100 pg">
+    <div class="container-fluid h-75 pg">
         <div class="container">
             <div class="row top-nav">
                 <h5 class="text-white my-auto col-sm-4">
@@ -56,21 +27,23 @@
             <h1 class="text-white col-sm-12 text-center mt-5">Geolocation Forecast</h1>
             <div class="col-sm-6 mt-4 forecast rounded">
                 <div class="row text-secondary">
-                    <button id="previous" type="button" class="btn btn-secondary col-sm-1"></button>
+                    <button id="previous" type="button" class="btn btn-secondary col-sm-1 "></button>
                     <div class="col-sm-10">
+
                         <div class="container col-sm-12 py-4 text-center" id="loading">
                             <div class="spinner-border text-dark" role="status">
                             </div>  
                             <p>Loading..</p>
                         </div>
-                        <div class="row" style="display: none;"  id="forecastWeek">
+                        
+                        <div class="row" style="display: none;"  id="forecastG" >
                             <h4 id="location" class="col-sm-12 text-center py-3"></h4>
                             <p class="mx-3">date: </p>
-                            <p id="valid_date" class="col-sm-4"></p>
+                            <p id="date" class="col-sm-4"></p>
                             <div class="conatiner col-sm-12">
                                 <div class="row">
                                         <h5 id="description" class="my-auto col-sm-7 px-0 text-right"></h5>
-                                        <img class="col-sm-2 px-0" id="whetherImg"
+                                        <img class="col-sm-2 px-0" id="imgF"
                                         src="" alt="">  
                                 </div>
                             </div>    
@@ -84,12 +57,12 @@
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-6 p-0 m-0 ">max:</p>
-                                            <p class="p-0 m-0 " id="max_temp"></p>
+                                            <p class="p-0 m-0 " id="maxTemp"></p>
                                             <p>°</p>
                                         </div>
                                         <div class="row">
                                             <p class="col-sm-6 p-0 m-0 " >min:</p>
-                                            <p class="p-0 m-0 " id="min_temp"></p>
+                                            <p class="p-0 m-0 " id="minTemp"></p>
                                             <p>°</p>
                                         </div>
                                         
@@ -100,10 +73,10 @@
                                 <div class="row align-items-center py-3">
                                     <h5 class="col-sm-12 text-center"> Wind</h5>
                                     <p class="col-sm-6 text-center px-0">speed: </p>
-                                    <p class="col-sm-4 text-center px-0" id="wind_spd"></p>
+                                    <p class="col-sm-4 text-center px-0" id="windSpd"></p>
                                     <p class="col-sm-2 px-0">m/s</p>
                                     <p class="col-sm-6 text-center px-0">direction: </p>
-                                    <p class="col-sm-6 text-center px-0" id="wind_cdir_full"></p>
+                                    <p class="col-sm-6 text-center px-0" id="windDir"></p>
                                 </div>
                             </div>
                         </div>
@@ -112,29 +85,68 @@
                 </div>
             </div>
         </div>
-     
-        <div class="container my-5 bg-white">
+    </div>
+    
+    <div class="text-secondary container text-center p-4 ">
+        <h2 class="mb-4">Research forecast</h2>
+        <div class="container my-5 bg-dark p-4" id="forecastQ" style="display: none;">
             <div class="row">
-                <div class="container col-sm-7">
-                    <div class="row my-2">
-                        <input type="text" class="col-sm-12 form-control" placeholder="Enter city">
-                    </div>
-                    <div class="row my-2">
-                        <input type="date" class="col-sm-12 form-control">
+                <h4 id="location" class="col-sm-7 p-0 m-0">Rovereto IT</h4>
+                <div class="col-sm-5 p-0">
+                    <div class="row">
+                        <p class="m-0 col-sm-3 text-center">date: </p>
+                        <p id="date" class="col-sm-9"></p>
                     </div>
                 </div>
-                <div class="container col-sm-5">
-                    <div class="row h-100 align-items-center">
-                        <button class="btn btn-primary col-sm-4">Search</button>
+            </div>
+            <div class="row mt-5">
+                <h4 id="description" class="col-sm-6 text-right">Pioggia</h4>
+                <img src="" class="col-sm-2 p-0" alt="" id="imgF">
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row h-100 align-items-center text-center py-3">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <p class="col-sm-6 my-auto">temp: </p>
+                                <h3 id="temp"></h3>
+                                <h3>°</h3>
+                            </div>
+                            <div class="row">
+                                <p class="col-sm-6 p-0 m-0 ">max:</p>
+                                <p class="p-0 m-0 " id="maxTemp"></p>
+                                <p>°</p>
+                            </div>
+                            <div class="row">
+                                <p class="col-sm-6 p-0 m-0 " >min:</p>
+                                <p class="p-0 m-0 " id="minTemp"></p>
+                                <p>°</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 container">
+                    <div class="row align-items-center py-3">
+                        <h5 class="col-sm-12 text-center"> Wind</h5>
+                        <p class="col-sm-6 text-center px-0">speed: </p>
+                        <p class="col-sm-4 text-center px-0" id="windSpd"></p>
+                        <p class="col-sm-2 px-0">m/s</p>
+                        <p class="col-sm-6 text-center px-0">direction: </p>
+                        <p class="col-sm-6 text-center px-0" id="windDir"></p>
                     </div>
                 </div>
             </div>
         </div>
-             
+        <div class="row pt-3 text-center align-items-center d-flex justify-content-center">
+            <input id="query" type="text" class="col-sm-7 form-control" placeholder="Enter city">
+        </div>
+        <div class="row pt-3 text-center align-items-center d-flex justify-content-center">
+            <input id="query" type="date" class="col-sm-5 form-control">
+            <button class="btn btn-primary mx-1 col-sm-2" id="search">Search</button>
+        </div>
+           
     </div>
-        
-       
-
 </body>
 <script src="/js/dati.js">
 </script>
