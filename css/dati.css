@@ -1,0 +1,37 @@
+body,html{
+    height: 100%;
+    width: 100%;
+   /* background-color: rgba(170, 170, 170, 0.178); */
+}
+.top-nav{
+    background-color: rgba(255, 255, 255, 0.226);
+    height: 10%;
+}
+.pg{
+    background-image: url("/img/sfondo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+}
+.gF{
+    height: 80%;
+}
+.dati{
+    height: 45%;
+    background-color: rgba(255, 255, 255, 0.226);
+}
+.forecast{
+    background-color: rgba(255, 255, 255, 0.74);
+}
+.btn-secondary{
+    background-color:rgba(128, 128, 128, 0.37);
+    border:none;
+   
+}
+.btn-secondary:hover{
+    background-color: rgba(199, 199, 199, 0.712);
+}
+.bordo{
+    border-top: solid 10px rgba(0, 0, 0, 0.253);
+}
+
